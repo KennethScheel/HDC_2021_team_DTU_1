@@ -67,6 +67,8 @@ Same as above, but with an added Cholesky term for including uncertainty in PSF 
 The egrssMatlab library is a linear algebra library for smarter matrix calculations, written by Associate Professor Martin S. Andersen at DTU Compute. 
 
 
+The script `estimate_psf_radius.m` performs some image analysis to estimate a crude initial PSF radius for each step, and the scripts `estimate_psf_radius_v2.m` uses the iterative deblurring/PSF radius estimation method adapted from [1] to do the same. These were run using the blurred PSF images for each steps provided by the competition organizers. These methods along with a grid-search for the optimal PSF radius and regularization parameter combination, have yielded some parameters for each step which we consider optimal by visual inspection. These scripts are not necessary for running the deblurring algorithm, but gives an insight into how we approached the problem of estimating the radius of a real-life point spread function. 
+
 ## Usage instructions
 The main deblurring algorithm is implemented in the `main.m` function, which takes three input arguments:
 
