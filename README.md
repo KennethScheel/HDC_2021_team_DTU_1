@@ -58,28 +58,32 @@ The `main_pipeline.m` function opens each image in the specified input folder, p
 
 The main algorithm needs the following additional Matlab functions to run
 - `convb.m`  
-- `r_update.m`
-- `x_update.m`
-- `FISTA_TVsmooth.m`
-- `FISTA_TVsmooth_Chol_generator.m`
-- egrssMatlab library containing 15 functions
-
-Function descriptions:
 - For performing image convolution with a given PSF radius
 
+- `r_update.m`
 - Function for estimating PSF radius for current level of blur, given a blurred image b
 
+- `x_update.m`
 - Function for performing image deblurring of a blurred image b, given the mean PSF radius estimate r
 
+- `FISTA_TVsmooth.m`
 - Solves a smooth approximation to a total variation regularized least squares problem  
 
    min_x  1/2*||A(r)x-b||_2^2+ lambda*TV(x)
 
+- `FISTA_TVsmooth_Chol_generator.m`
 - Same as above, but with an added Cholesky term for including uncertainty in PSF radius estimate (denote the PSF radius estimate by r and the uncertainty term by mu)
 
    min_x  1/2*||L{A(r)x-b-mu}||_2^2+ lambda*TV(x)
 
+- egrssMatlab library containing 15 functions
 - The egrssMatlab library is a linear algebra library for smarter matrix calculations, written by Associate Professor Martin S. Andersen at DTU Compute. 
+
+Function descriptions:
+
+
+
+
 
 ## Usage instructions
 
