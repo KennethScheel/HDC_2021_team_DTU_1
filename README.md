@@ -16,28 +16,31 @@ E-mail: `s171246@student.dtu.dk, s183984@student.dtu.dk, s174488@student.dtu.dk,
 
 ## About
 
-This GitHub repository has been created as the submission for group 1 (out of 2) of Team DTU for the Helsinki Deblur Challenge 2021. The Matlab functions and scripts in the repository, implements an image deblurring algorithm with Point-Spread-Function (PSF) radius estimation. The algorithm is based on a paper written by our supervisors where they develop a CT-reconstruction method, which uses uncertainty quantification to estimate view angles using only measured CT data [Riis, N. A. B., Dong, Y. and Hansen, P. C.: Computed Tomography with View Angle
-Estimation using Uncertainty Quantification. Inverse Problems, 37, pp. 065007, (2021)].
+This GitHub repository has been created as the submission for group 1 (out of 2) of Team DTU for the Helsinki Deblur Challenge 2021.
+The Matlab functions and scripts in the repository implements an image deblurring algorithm with Point-Spread-Function (PSF) radius estimation.
+The algorithm is based on a paper written by our supervisors, where they develop a CT-reconstruction method, which uses uncertainty quantification to estimate view angles using only measured CT data [1].
 
 ## Description of algorithm
 
-The algorithms foundation lies in the assumption that a blurred image b consists of two things:
-- the exact image x convolved (blurred) with a PSF of radius r
-- a Gaussian noise term e, with mean 0 and some standard deviation sigma 
+According to the work introduced in [1], we apply it for the image deblurring problem with an uncertain point spread function (PSF). Since the competition dataset as well as PSFs were taken by camera, PSFs are not accurate, which would influence the deblurring results significantly. Our focus is to test the idea from [1] on image deblurring problem and to see how to estimate PSF from degraded images. We assume that the blurring process is the out-of-focus blur, and PSF is a normalized disk with the radius r ∈ R. We apply the method proposed in [1] to estimate the radius r. The method combines the idea of the approximation error approach in Bayesian framework with the variational methods, and quantifies the uncertainty in r via a model-discrepancy term.
 
-If we denote the "convolution with a given PSF of radius r" operator as A(r), we can write for any blurred image b
+The foundation of the algorithm lies in the assumption that a blurred image b consists of two things:
+- the exact image x convolved (out-of-focus blurred) with a PSF of radius r > 0
+- a Gaussian noise term e, with mean 0 and some standard deviation sigma > 0
+
+We denote the "convolution with a PSF of radius r" operator as A(r), and write the problem as
 
 b = A(r)x + e 
 
-The PSF radius r is the parameter which controls the level of blurring. The deblurring algorithm is based on two steps:
 
-1) Estimate the PSF radius r from the blurred image b
-2) Reconstruct x by image deconvolution with the estimated PSF radius
+First the algorithm is provided some pre-calculated initial PSF radius estimates, tailored to each step of the competition. This initial radius estimate can be further refined by using the method from [1] iteratively. Due to the high resolutions, in order to reduce the computational complexity, we apply the method in [1] to a small 2D patch of the degraded image. A small patch is extracted from the noisy blurred image. The patch is deblurred by solving a minimization problem with Total Variation (TV) regularization. In principle we can apply any variational methods to deblur the image. Here, we simply utilize the L2-TV method followed by image enhancement technique.
 
+   min_x 1/2 * ||A(r)x - b||_2^2 + lambda * TV(x)
 
-```bash
-Full description of algorithm, pseudocode maybe?
-```
+The small size of the patch makes it feasible to do uncertainty quantification of the radius estimate and the noise level. This is used to refine the radius estimate, which is then used to improve the deblurring of the patch. 
+
+The algorithm alternates between refining the radius estimate and refining the patch for 10 iterations, after which the radius is assumed to have converged.
+Finally, the full image is deblurred by solving a TV regularized minimization problem as above where we use the estimated PSF radius.
 
 
 ## Installation instructions
@@ -85,4 +88,8 @@ For this competition we have been given both blurred and exact data with 20 diff
 ## Examples
 
 ![examples](assets/steps_examples.png)
+
+
+## References
+[1] Nicolai Andre Brogaard Riis, Yiqiu Dong and Per Christian Hansen, Computed tomography with view angle estimation using uncertainty quantification, Inverse Problems, Vol. 37, pp. 065007, 2021.
 
