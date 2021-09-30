@@ -84,7 +84,7 @@ The `main.m` function opens each of the *.tif files in the specified input direc
 
 ## Examples
 
-![examples](assets/steps_examples.png)
+![examples](assets/steps_examples_imsharpen.png)
 
 
 ## References
