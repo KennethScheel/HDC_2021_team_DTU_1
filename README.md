@@ -44,18 +44,6 @@ Finally, the full image is deblurred by solving a TV regularized minimization pr
 
 
 ## Installation instructions
-
-The main deblurring algorithm is implemented in the `main_pipeline.m` function, which takes three input arguments:
-
-1. (string) Folder where the input image files are located
-2. (string) Folder where the output images must be stored
-3. (int) Blur category number. Values between 0 and 19
-
-Example of calling function: 
-> `main_pipeline('path/to/input/files', 'path/to/output/files', 3)`
-
-The `main_pipeline.m` function opens each image in the specified input folder, performs the deblurring using our algorithm, and then saves the image as a PNG file in the output folder with the same filename. 
-
 The main algorithm needs the following additional Matlab functions to run
 - `convb.m`  For performing image convolution with a given PSF radius
 
@@ -80,7 +68,16 @@ The egrssMatlab library is a linear algebra library for smarter matrix calculati
 
 
 ## Usage instructions
+The main deblurring algorithm is implemented in the `main.m` function, which takes three input arguments:
 
+1. (string) `inputfolder`: Folder where the input blurred image files are located (e.g 'path/to/input/files')
+2. (string) `outputfolder`: Folder where the output deblurred images must be stored (e.g 'path/to/output/files')
+3. (int) `step`: Blur category number. Values between 0 and 19
+
+Example of calling function: 
+> `main('path/to/input/files', 'path/to/output/files', 3)`
+
+The `main.m` function opens each of the *.tif files in the specified input directory, performs the deblurring using our algorithm, and then saves the deblurred image as a *.PNG file in the output folder with the same filename (apart from the extension). 
 
 ## Examples
 
