@@ -33,7 +33,7 @@ We denote the "convolution with a PSF of radius r" operator as A(r), and write t
 b = A(r)x + e 
 
 
-First the algorithm is provided some pre-calculated initial PSF radius estimates, tailored to each step of the competition. This initial radius estimate can be further refined by using the method from [1] iteratively. Due to the high resolutions, in order to reduce the computational complexity, we apply the method in [1] to a small 2D patch of the degraded image. A small patch is extracted from the noisy blurred image. The patch is deblurred by solving a minimization problem with Total Variation (TV) regularization. In principle we can apply any variational methods to deblur the image. Here, we simply utilize the L2-TV method followed by image enhancement technique.
+First the algorithm is provided some pre-calculated initial PSF radius estimates, tailored to each step of the competition. This initial radius estimate can be further refined by using the method from [1] iteratively. Due to the high resolutions, in order to reduce the computational complexity, we apply the method in [1] to a small 2D patch of the degraded image. A small patch is extracted from the noisy blurred image. The patch is deblurred by solving a minimization problem with Total Variation (TV) regularization. In principle we can apply any variational methods to deblur the image. Here, we simply utilize the L2-TV method followed by some image enhancement techniques.
 
    min_x 1/2 * ||A(r)x - b||_2^2 + lambda * TV(x)
 
