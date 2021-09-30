@@ -57,8 +57,7 @@ Example of calling function:
 The `main_pipeline.m` function opens each image in the specified input folder, performs the deblurring using our algorithm, and then saves the image as a PNG file in the output folder with the same filename. 
 
 The main algorithm needs the following additional Matlab functions to run
-- `convb.m`  
-For performing image convolution with a given PSF radius
+- `convb.m`  For performing image convolution with a given PSF radius
 
 - `r_update.m`
 Function for estimating PSF radius for current level of blur, given a blurred image b
@@ -76,7 +75,7 @@ Same as above, but with an added Cholesky term for including uncertainty in PSF 
 
    min_x  1/2*||L{A(r)x-b-mu}||_2^2+ lambda*TV(x)
 
-- egrssMatlab library containing 15 functions
+- 'egrssMatlab' library containing 15 functions
 The egrssMatlab library is a linear algebra library for smarter matrix calculations, written by Associate Professor Martin S. Andersen at DTU Compute. 
 
 Function descriptions:
