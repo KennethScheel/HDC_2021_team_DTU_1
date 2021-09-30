@@ -78,15 +78,9 @@ Same as above, but with an added Cholesky term for including uncertainty in PSF 
 - `egrssMatlab` library containing 15 functions.
 The egrssMatlab library is a linear algebra library for smarter matrix calculations, written by Associate Professor Martin S. Andersen at DTU Compute. 
 
-Function descriptions:
-
-
-
-
 
 ## Usage instructions
 
-For this competition we have been given both blurred and exact data with 20 different levels of blurring. This in principle allows us to estimate the PSF radius r for each blurring level, since we can use the first part of the algorithm (`r_update.m`) on a given pair of images (b,x) from each level. 
 
 ## Examples
 
