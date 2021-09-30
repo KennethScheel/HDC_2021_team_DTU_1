@@ -75,7 +75,7 @@ Same as above, but with an added Cholesky term for including uncertainty in PSF 
 
    min_x  1/2*||L{A(r)x-b-mu}||_2^2+ lambda*TV(x)
 
-- `egrssMatlab` library containing 15 functions
+- `egrssMatlab` library containing 15 functions.
 The egrssMatlab library is a linear algebra library for smarter matrix calculations, written by Associate Professor Martin S. Andersen at DTU Compute. 
 
 Function descriptions:
