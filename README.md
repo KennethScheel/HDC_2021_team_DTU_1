@@ -84,3 +84,5 @@ For this competition we have been given both blurred and exact data with 20 diff
 
 ## Examples
 
+![examples](assets/steps_examples.png)
+
