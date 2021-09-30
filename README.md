@@ -44,14 +44,15 @@ Finally, the full image is deblurred by solving a TV regularized minimization pr
 
 
 ## Installation instructions
-The main algorithm needs the following additional Matlab functions to run
+The main deconvolution algorithm is implemented in the Matlab function `main.m`. It needs the following additional Matlab routines to run correctly.
+
 - `convb.m`  For performing image convolution with a given PSF radius
 
 - `r_update.m`
 Function for estimating PSF radius for current level of blur, given a blurred image b
 
 - `x_update.m`
-Function for performing image deblurring of a blurred image b, given the mean PSF radius estimate r
+Function for performing image deconvolution of a blurred image b, given the mean PSF radius estimate r
 
 - `FISTA_TVsmooth.m`
 Solves a smooth approximation to a total variation regularized least squares problem  
