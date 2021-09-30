@@ -17,7 +17,7 @@ E-mail: `s171246@student.dtu.dk, s183984@student.dtu.dk, s174488@student.dtu.dk,
 ## About
 
 This GitHub repository has been created as the submission for group 1 (out of 2) of Team DTU for the Helsinki Deblur Challenge 2021.
-The Matlab functions and scripts in the repository implements an image deblurring algorithm with Point-Spread-Function (PSF) radius estimation.
+The Matlab functions and routines in the repository implements an image deblurring algorithm with Point-Spread-Function (PSF) radius estimation.
 The algorithm is based on a paper written by our supervisors, where they develop a CT-reconstruction method, which uses uncertainty quantification to estimate view angles using only measured CT data [1].
 
 ## Description of algorithm
