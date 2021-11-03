@@ -87,6 +87,11 @@ The `main.m` function opens each of the *.tif files in the specified input direc
 ![examples](assets/steps_examples_imsharpen.png)
 
 
+## License
+
+The license for the EGRSS-package fcan be found in the 'LICENSE' file. The GitHub repository for the package can be found in https://github.com/martinandersen/EGRSS
+
+
 ## References
 [1] Nicolai Andre Brogaard Riis, Yiqiu Dong and Per Christian Hansen, Computed tomography with view angle estimation using uncertainty quantification, Inverse Problems, Vol. 37, pp. 065007, 2021.
 
